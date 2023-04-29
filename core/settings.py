@@ -65,6 +65,7 @@ AUTH_USER_MODEL ='league.User'
 
 CORS_ALLOW_ALL_ORIGINS: True 
 CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOWED_ORIGINS=['https://platform.appgyver.com' ]
 
 TEMPLATES = [
     {

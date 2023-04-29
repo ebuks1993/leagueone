@@ -64,6 +64,7 @@ ROOT_URLCONF = 'core.urls'
 AUTH_USER_MODEL ='league.User'  
 
 CORS_ALLOW_ALL_ORIGINS: True 
+CORS_ALLOW_CREDENTIALS = True
 
 TEMPLATES = [
     {

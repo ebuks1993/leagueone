@@ -28,7 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 
-CSRF_TRUSTED_ORIGINS=['https://*.d935-102-88-62-32.ngrok-free.app/']
+CSRF_TRUSTED_ORIGINS=['https://*.leagueone-production.up.railway.app//']
 
 # Application definition
 

@@ -5,7 +5,7 @@ from . import views
 
 
 router=DefaultRouter()
-router.register('products', views.gameViewset)
+router.register('games', views.gameViewset)
 
 
 

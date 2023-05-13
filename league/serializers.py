@@ -13,6 +13,6 @@ class UserCreateSerializer(BaseUserCreateSerializer):
 class gameSerializer(serializers.ModelSerializer):
   class Meta:
     model=games
-    fields=['id','Pitch','Address']
+    fields=['id','Pitch','Address','Date','Price','meridian','Time']
 
  

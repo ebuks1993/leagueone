@@ -72,7 +72,7 @@ def webhook (request):
 
 
 
-        print("data received from webhook is :",game,name,amt,)
+        print("data received from webhook is :",game,amt,)
         return HttpResponse("webhook received")
     else:
         return HttpResponse("This is not a post methood")

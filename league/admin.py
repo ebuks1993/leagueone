@@ -1,10 +1,14 @@
 from django.contrib import admin
-from .models import games,User
+from .models import User,Games,Pitch,Sport,GameSelect,Agerange
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 
 # Register your models here.
 
-admin.site.register(games)
+admin.site.register(Games)
+admin.site.register(GameSelect)
+admin.site.register(Pitch)
+admin.site.register(Sport)
+admin.site.register(Agerange)
 
 
 @admin.register(User)

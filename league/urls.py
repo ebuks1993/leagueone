@@ -6,8 +6,10 @@ from . import views
 
 router=DefaultRouter()
 router.register('games', views.gameViewset)
+router.register("selectgames",views.selectgameViewset,basename='gameselect')
 
 
 
 urlpatterns = [
-    path("",include(router.urls)),]
+    path("",include(router.urls)),
+    path('webhook',views.webhook)]

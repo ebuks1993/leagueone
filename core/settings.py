@@ -28,7 +28,7 @@ DEBUG = False
 ALLOWED_HOSTS = ['*']
 
 
-CSRF_TRUSTED_ORIGINS=['https://*.leagueone-production.up.railway.app//','https://*.fb25-129-18-197-228.ngrok-free.app/']
+CSRF_TRUSTED_ORIGINS=['https://*.leagueone-production.up.railway.app//','https://*.charisma.ngrok.io/']
 
 # Application definition
 
@@ -44,8 +44,9 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'whitenoise.runserver_nostatic',
-    'djoser'
-
+    'djoser',
+    # 'rest_framework.authtoken',
+    'django_rest_passwordreset'
 ]
 
 MIDDLEWARE = [
@@ -57,6 +58,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     "whitenoise.middleware.WhiteNoiseMiddleware",
+    'querycount.middleware.QueryCountMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
@@ -66,7 +68,7 @@ AUTH_USER_MODEL ='league.User'
 
 # CORS_ALLOW_ALL_ORIGINS: True 
 # CORS_ALLOW_CREDENTIALS = True
-CORS_ALLOWED_ORIGINS=['https://platform.appgyver.com']
+CORS_ALLOWED_ORIGINS=['https://platform.appgyver.com','https://platform.preview.appgyver.com']
 
 TEMPLATES = [
     {
@@ -98,11 +100,15 @@ SIMPLE_JWT = {
 }
 
 DJOSER = {
+#  'LOGIN_FIELD':'email',
  'SERIALIZERS':{
  'user_create':'league.serializers.UserCreateSerializer'
+
  }
+ 
 }
 
+# AUTHENTICATION_BACKENDS = ['league.backends.EmailBackend']
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
@@ -136,7 +142,14 @@ else:
         }
     }
 
-
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# Email
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIT_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'apikey'
+EMAIL_HOST_PASSWORD = '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'
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators

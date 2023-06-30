@@ -58,7 +58,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     "whitenoise.middleware.WhiteNoiseMiddleware",
-    'querycount.middleware.QueryCountMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 

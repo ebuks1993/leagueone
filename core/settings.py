@@ -12,6 +12,13 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 
+## env variable
+from dotenv import load_dotenv
+import os 
+
+load_dotenv()
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -29,6 +36,7 @@ ALLOWED_HOSTS = ['*']
 
 
 CSRF_TRUSTED_ORIGINS=['https://*.leagueone-production.up.railway.app//','https://*.charisma.ngrok.io/']
+
 
 # Application definition
 
@@ -135,9 +143,9 @@ else:
             'ENGINE': 'django.db.backends.postgresql',
             'NAME':'railway',
             'USER':'postgres',
-            'PASSWORD': 'Yvd0jIuZmIHnpWLscPZ3',
-            'HOST': 'containers-us-west-203.railway.app',
-            'PORT':'7253'
+            'PASSWORD': os.environ.get('DB_PASS'),
+            'HOST': os.environ.get('DB_HOST'),
+            'PORT': os.environ.get('DB_PORT')
         }
     }
 
@@ -145,10 +153,10 @@ else:
 # Email
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.sendgrid.net'
-EMAIT_PORT = 587
+EMAIT_PORT = os.environ.get('EMAIT_PORT')
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'apikey'
-EMAIL_HOST_PASSWORD = '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'
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators

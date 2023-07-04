@@ -143,8 +143,8 @@ else:
             'ENGINE': 'django.db.backends.postgresql',
             'NAME':'railway',
             'USER':'postgres',
-            'PASSWORD': "Yvd0jIuZmIHnpWLscPZ3",
-            'HOST': "containers-us-west-203.railway.app",
+            'PASSWORD': os.environ.get('DB_PASS'),
+            'HOST': os.environ.get('DB_HOST'),
             'PORT': '7253'
         }
     }

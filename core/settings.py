@@ -144,8 +144,8 @@ else:
             'NAME':'railway',
             'USER':'postgres',
             'PASSWORD': os.environ.get('DB_PASS'),
-            'HOST': os.environ.get('DB_HOST'),
-            'PORT': os.environ.get('DB_PORT')
+            'HOST': 'apikey',
+            'PORT': '7253'
         }
     }
 

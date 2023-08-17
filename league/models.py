@@ -35,6 +35,8 @@ class Pitch(models.Model):
     Address = models.TextField()
     Price = models.IntegerField()
     players = models.IntegerField()
+    pitchmap = models.URLField( max_length=2000,null=True)
+
 
     def __str__(self):
         return self.Name
@@ -68,6 +70,7 @@ class Games( models.Model):
     Time = models.CharField( max_length=50,null=True)
     spot = models.IntegerField(default=0)
     Status = models.CharField( max_length=50, choices=sta,default='INCOMPLETE')
+    # mins = models.IntegerField()
 
     def __str__(self):
         return f'{self.pitch} --{self.Date}--{self.Time} '

@@ -2,6 +2,7 @@ from django.shortcuts import render
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.authtoken.models import Token
 from django.db import transaction
+from .pagination import gamePagination
 # from datetime import date
 
 from .serializers import gameSerializer,yourgameSeralizer,transSerializer,WalletSerializer
@@ -35,6 +36,7 @@ class selectgameViewset(ModelViewSet):
 
     # queryset=GameSelect.objects.all().order_by("-createdat","-id")
     serializer_class=yourgameSeralizer
+    pagination_class=gamePagination
 
 
 class gameViewset(ModelViewSet):

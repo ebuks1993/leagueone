@@ -4,8 +4,8 @@ from rest_framework.authtoken.models import Token
 from django.db import transaction
 # from datetime import date
 
-from .serializers import gameSerializer,yourgameSeralizer
-from .models import Games,User,GameSelect,User
+from .serializers import gameSerializer,yourgameSeralizer,transSerializer,WalletSerializer
+from .models import Games,User,GameSelect,trans,wallet
 from django_filters.rest_framework import DjangoFilterBackend
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
@@ -37,6 +37,21 @@ class selectgameViewset(ModelViewSet):
     serializer_class=yourgameSeralizer
 
 
+class gameViewset(ModelViewSet):
+    queryset=Games.objects.select_related('pitch','sport','Agerange').prefetch_related("gameselect_set__user").all()
+    serializer_class=gameSerializer
+    filter_backends=[DjangoFilterBackend]
+    filterset_fields=['Date','Status','id']
+
+class transviewset(ModelViewSet):
+    queryset=trans.objects.all()
+    serializer_class=transSerializer
+
+class walletviewset(ModelViewSet):
+    queryset=wallet.objects.all()
+    serializer_class=WalletSerializer
+
+
 
 @csrf_exempt
 def webhook (request):
@@ -60,7 +75,7 @@ def webhook (request):
             game1.spot = game1.spot + 1
             game1.save()
 
-            ## check if the space is filled 
+            ## check if the space is filled then change the game status to complete 
             pum=game1.pitch.players
             pam=game1.spot
             if pum==pam:

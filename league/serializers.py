@@ -1,5 +1,6 @@
 from rest_framework import serializers 
-from .models import Games,GameSelect
+from .models import Games,GameSelect,wallet,trans
+from django.db import transaction
 
 
 from djoser.serializers import UserCreateSerializer as BaseUserCreateSerializer
@@ -45,6 +46,7 @@ class gameSerializer(serializers.ModelSerializer):
 
 class yourgameSeralizer(serializers.ModelSerializer):
   gamdat=serializers.SerializerMethodField(method_name="gamedate")
+  games=gameSerializer()
   class Meta:
     model=GameSelect
     fields=['id','user','games','Amount',"gamdat"]
@@ -53,4 +55,19 @@ class yourgameSeralizer(serializers.ModelSerializer):
   def gamedate(self,sel:GameSelect):
     return sel.games.Date
 
-  
+
+class transSerializer(serializers.ModelSerializer):
+  class Meta:
+    model=trans
+    fields=['user','game','inflow','outflow','date']
+
+
+  # def save(self , **kwargs):
+  #     with transaction.atomic():
+  #       ponded
+
+
+class WalletSerializer(serializers.ModelSerializer):
+  class Meta:
+    model=wallet
+    fields=['user','wallet']

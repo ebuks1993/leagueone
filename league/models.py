@@ -78,9 +78,19 @@ class Games( models.Model):
 class GameSelect(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     games = models.ForeignKey(Games, on_delete=models.CASCADE)
-    Amount = models.IntegerField(  null=True)
-    createdat = models.DateField( auto_now_add=True , null=True)
+    Amount = models.IntegerField( null=True)
+    createdat = models.DateField(auto_now_add=True , null=True)
 
+class trans(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    game = models.ForeignKey(GameSelect, on_delete=models.DO_NOTHING)
+    inflow = models.IntegerField(default=0)  
+    outflow = models.IntegerField(default=0)
+    date = models.DateField( auto_now_add=True)
+
+class wallet(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    wallet = models.IntegerField(default=0)
 
 
 @receiver(reset_password_token_created)

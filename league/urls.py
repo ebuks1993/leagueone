@@ -7,6 +7,8 @@ from . import views
 router=DefaultRouter()
 router.register('games', views.gameViewset)
 router.register("selectgames",views.selectgameViewset,basename='gameselect')
+router.register("trans",views.transviewset,basename='trans')
+router.register("wallet",views.walletviewset,basename='wallet')
 
 
 

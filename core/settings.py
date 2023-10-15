@@ -38,6 +38,10 @@ ALLOWED_HOSTS = ['*']
 CSRF_TRUSTED_ORIGINS=['https://*.leagueone-production.up.railway.app//','https://*.charisma.ngrok.io/']
 
 
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'apps.core.pagination.StandardResultsSetPagination'
+}
 # Application definition
 
 INSTALLED_APPS = [

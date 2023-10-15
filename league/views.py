@@ -36,7 +36,7 @@ class selectgameViewset(ModelViewSet):
 
     # queryset=GameSelect.objects.all().order_by("-createdat","-id")
     serializer_class=yourgameSeralizer
-    pagination_class=gamePagination
+    # pagination_class=gamePagination
 
 
 class gameViewset(ModelViewSet):
